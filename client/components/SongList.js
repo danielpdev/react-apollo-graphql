@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import { Query } from "react-apollo";
 
-class SongList extends React.Component{
-  render() {
-    console.log(this.props);
-    const { songs } = this.props.data;
-    return (<div>
-            <h1>Lyrics</h1>
-            {songs && songs.map(song => (<p key={song.id}>{song.title}</p>)) } 
-            
-            </div>);
-  }
-}
-
-const query = gql`
+const GET_SONGS = gql`
 {
   songs{
     id
@@ -23,4 +11,23 @@ const query = gql`
 }
 `;
 
-export default graphql(query)(SongList);
+const SongList = ({ onSongSelected }) => (
+  <Query query={GET_SONGS}>
+    {({ loading, error, data }) => {
+      if (loading) return "Loading...";
+      if (error) return `Error! ${error.message}`;
+      
+      const { songs } = data;
+
+      return (
+        <div>
+            <h1>Lyrics</h1>
+            {songs && songs.map(song => (<p key={song.id}>{song.title}</p>)) } 
+        </div>
+      );
+    }
+}
+  </Query>
+);
+
+export default SongList;
