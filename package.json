@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js --ignore client --host 0.0.0.0"
+    "dev": "nodemon index.js --ignore client --host 0.0.0.0",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.3",
+    "cors": "^2.8.5",
     "css-loader": "^1.0.1",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
@@ -41,8 +43,12 @@
     "react-apollo": "^2.3.2",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.27.0",
     "webpack-dev-middleware": "^3.4.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.2"
   }
 }

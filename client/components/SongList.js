@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
 import { Query } from "react-apollo";
 
-const GET_SONGS = gql`
-{
-  songs{
-    id
-    title
-  }
-}
-`;
+import { GET_SONGS } from './../queries';
 
 const SongList = ({ onSongSelected }) => (
-  <Query query={GET_SONGS}>
+  <Query query={GET_SONGS} >
     {({ loading, error, data }) => {
       if (loading) return "Loading...";
       if (error) return `Error! ${error.message}`;
@@ -20,10 +12,9 @@ const SongList = ({ onSongSelected }) => (
       const { songs } = data;
 
       return (
-        <div>
-            <h1>Lyrics</h1>
-            {songs && songs.map(song => (<p key={song.id}>{song.title}</p>)) } 
-        </div>
+        <ul className="collection">
+           {songs && songs.map(song => (<li className="collection-item" key={song.id}>{song.title}</li>)) } 
+        </ul>
       );
     }
 }

@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from "apollo-boost";
-  
 import { ApolloProvider } from 'react-apollo';
-import SongList from './components/SongList';
-const client = new ApolloClient({})
-console.log(SongList)
+import { BrowserRouter } from 'react-router-dom'
+
+import App from './components/App';
+const client = new ApolloClient({    
+//   uri: `http://0.0.0.0:4000/graphql`
+})
+
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <SongList />
+    <BrowserRouter>
+      <App/>
+      </BrowserRouter>
     </ApolloProvider>
   );
 };

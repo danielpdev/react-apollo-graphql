@@ -3,9 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './client/index.js',
-  output: {
-    path: '/',
-    filename: 'bundle.js'
+  mode: 'development',
+   output: {
+    filename: 'bundle.js',
+    path: __dirname + '/build',
+         publicPath: '/',
+
   },
   module: {
     rules: [
@@ -19,6 +22,9 @@ module.exports = {
         test: /\.css$/
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
