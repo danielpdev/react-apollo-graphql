@@ -17,4 +17,19 @@ const GET_SONGS = gql`
   }
 }
 `;
-export { GET_SONGS, ADD_SONG};
+
+const DELETE_SONGS = gql`
+  mutation DeleteSong($ID: ID){
+     deleteSong(id: $ID){
+       id
+     }
+ }
+`;
+
+const GET_SONG = gql`
+  query Song($id: ID!){
+    song(id: $id){
+    title
+  }
+}`;
+export { GET_SONGS, ADD_SONG, DELETE_SONGS, GET_SONG};

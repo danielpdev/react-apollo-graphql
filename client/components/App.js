@@ -4,6 +4,7 @@ import AppRouter from './routes/AppRouter';
 import Header from './Header';
 import { Route } from "react-router-dom";
 import SongCreate from './SongCreate';
+import SongDetails from './SongDetails';
 
 const App = () => {
   return (
@@ -12,9 +13,8 @@ const App = () => {
       <Header />
 
       <Route exact path="/" component={SongList} />
-      <Route  path="/create" component={SongCreate} />
-      <Route  path="/update" component={SongCreate} />
-      <Route  path="/delete" component={SongCreate} />
+      <Route  path="/songs/new" component={SongCreate} />
+      <Route  path="/song/:id" component={SongDetails} />
     </div>
   </AppRouter>
 );
