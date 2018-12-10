@@ -22,7 +22,10 @@ const SongList = (props) => (
         e.preventDefault();
         props.history.push(`/song/${song.id}`);
       }
-} key={song.id}>{song.title}
+} key={song.id}>
+  <Link to={`/song/${song.id}`}>
+    {song.title}
+</Link>
              <SongDelete id={song.id}/>
              </li>)) } 
           </ul>

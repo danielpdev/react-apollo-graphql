@@ -11,6 +11,7 @@ const DeleteSong = (props) => {
                 query: GET_SONGS, 
                 data: { songs: songs.filter(song => song.id !== props.id)}
             });
+          if(props.onDelete) props.onDelete();
         }}>
          {(deleteSong, {data}) => (
                 <i className="material-icons"

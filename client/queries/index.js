@@ -30,6 +30,31 @@ const GET_SONG = gql`
   query Song($id: ID!){
     song(id: $id){
     title
+    id
   }
 }`;
-export { GET_SONGS, ADD_SONG, DELETE_SONGS, GET_SONG};
+
+const ADD_LYRIC_TO_SONG = gql`
+mutation AddLyricToSong($content: String, $songId: ID){
+  addLyricToSong(content:$content, songId: $songId){
+    lyrics {
+      content
+      likes
+      id
+    }
+  }
+}
+`;
+const GET_LYRICS_FOR_SONG = gql`
+query GetLyrics($id: ID!){
+  song(id: $id){
+    id
+    lyrics {
+      id
+      content
+      likes
+    }
+  }
+}
+`;
+export { GET_SONGS, ADD_SONG, DELETE_SONGS, GET_SONG, ADD_LYRIC_TO_SONG, GET_LYRICS_FOR_SONG};

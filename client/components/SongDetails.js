@@ -1,9 +1,12 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_SONG } from '../queries';
-
-export default ({match: {params: { id }}}) => {
-    console.log("ID ", id, id)
+import LyricCreate from './LyricCreate';
+import SongDelete from './SongDelete';
+import LyricsList from './LyricsList';
+export default (props) => {
+  const {match: {params: { id }}} = props;
+  const { history } = props;
     return (
         <Query query={GET_SONG} variables={{id}}>
          {({ loading, error, data : { song } }) => {
@@ -15,14 +18,15 @@ export default ({match: {params: { id }}}) => {
                   <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                       <span className="card-title">{song.title}</span>
-                      I am convenient because I require little markup to use effectively
                     </div>
                     <div className="card-action">
-                      <a href="#">This is a link</a>
-                      <a href="#">This is a link</a>
+                      <SongDelete id={song.id} onDelete={()=>history.push('/')}/>
                     </div>
                 </div>
-              </div>                );
+                <LyricsList id={song.id}/>
+                <LyricCreate id={song.id}/>
+              </div>                
+            );
             }}
         </Query>
     );
