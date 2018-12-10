@@ -18,13 +18,13 @@ class LyricCreate extends Component {
               id: this.props.id
             }});
             data.song.lyrics = addLyricToSong.lyrics;
-            cache.writeQuery({
-              query: GET_LYRICS_FOR_SONG, 
-              variables: {
-                id: this.props.id
-              },
-              data
-          });
+          //   cache.writeQuery({ //no need to write to cache because we already using inmemory cache, check index.js/client
+          //     query: GET_LYRICS_FOR_SONG, 
+          //     variables: {
+          //       id: this.props.id
+          //     },
+          //     data
+          // });
         }}>
        {(addLyricToSong, {data}) => (
              <form onSubmit={e => 

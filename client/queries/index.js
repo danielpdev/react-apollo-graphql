@@ -57,4 +57,14 @@ query GetLyrics($id: ID!){
   }
 }
 `;
-export { GET_SONGS, ADD_SONG, DELETE_SONGS, GET_SONG, ADD_LYRIC_TO_SONG, GET_LYRICS_FOR_SONG};
+
+const LYRIC_LIKE = gql`
+mutation LyricLike($id:ID){
+  likeLyric(id:$id)
+  {
+    id
+    likes
+  }
+}
+`;
+export { GET_SONGS, ADD_SONG, DELETE_SONGS, GET_SONG, ADD_LYRIC_TO_SONG, GET_LYRICS_FOR_SONG, LYRIC_LIKE};

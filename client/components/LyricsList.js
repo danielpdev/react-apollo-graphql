@@ -4,6 +4,7 @@ import { Link,  } from "react-router-dom";
 
 import { GET_LYRICS_FOR_SONG } from './../queries';
 import LyricDelete from './LyricDelete';
+import LyricLike from './LyricLike';
 const LyricsList = (props) => (
   <Query query={GET_LYRICS_FOR_SONG} variables={{id: props.id}} >
     {({ loading, error, data }) => {
@@ -21,7 +22,10 @@ const LyricsList = (props) => (
       }
           } key={lyric.id}>
               {lyric.content}
+              {lyric.likes}
+              <LyricLike id={lyric.id} songId={props.id}/>
               <LyricDelete id={lyric.id}/>
+              
              </li>)) } 
           </ul>
         </div>
